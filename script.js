@@ -23,15 +23,15 @@ if (homeLinks && !homeLinks.querySelector('a[href="about.html"]')) {
   const aboutLink = document.createElement('a');
   aboutLink.className = 'feature-link reveal';
   aboutLink.href = 'about.html';
-  aboutLink.innerHTML = '<span>03 / Profile</span><strong>About and experience <b>↗</b></strong>';
+  aboutLink.innerHTML = '<span>About</span><strong>More about me <b>↗</b></strong>';
   homeLinks.insertBefore(aboutLink, homeLinks.firstElementChild);
 }
 if (homeLinks) {
   const orderedLinks = [
-    ['about.html', '01 / Profile'],
-    ['certificates.html', '02 / Credentials'],
-    ['projects.html', '03 / Selected work'],
-    ['contact.html', '04 / Contact']
+    ['about.html', 'About'],
+    ['certificates.html', 'Learning'],
+    ['projects.html', 'Building'],
+    ['contact.html', 'Connect']
   ];
   orderedLinks.forEach(([href, label]) => { const link = homeLinks.querySelector(`a[href="${href}"]`); if (link) link.querySelector('span').textContent = label; });
 }
@@ -66,12 +66,13 @@ mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click
 }));
 
 const pageCopy = {
-  certificates: ['Professional certifications', 'Verified learning across software development, data, systems administration, and networking.'],
-  projects: ['Selected software projects', 'Web and mobile applications developed with a focus on useful features, clear interfaces, and maintainable implementation.'],
-  contact: ['Professional contact', 'For internships, collaboration, or software development opportunities, please reach out through the channels below.']
+  about: ['Learning, building,<br><em>and figuring things out.</em>', 'I’m a D4 Software Engineering student at Politeknik Negeri Indramayu. My main interests are web development, mobile applications, frontend interfaces, and practical IT support.'],
+  certificates: ['What I’ve<br><em>been learning.</em>', 'These certificates represent the areas I’ve explored while building my foundation in software development, networking, systems, and data.'],
+  projects: ['Things I’ve<br><em>built so far.</em>', 'A collection of web and mobile projects from coursework, personal experiments, and real-world problem solving.'],
+  contact: ['Let’s<br><em>talk.</em>', 'I’m open to internships, collaboration, freelance work, and opportunities to grow as a software engineer. If you have an idea, a project, or simply want to connect, feel free to reach out.']
 };
 const pageKey = document.body.dataset.page;
-const pageNumbers = { about: '01 / About', certificates: '02 / Credentials', projects: '03 / Selected work', contact: '04 / Contact' };
+const pageNumbers = { about: 'A little about me', certificates: 'Learning along the way', projects: 'Selected work', contact: 'Get in touch' };
 const pageEyebrow = document.querySelector('.page-hero .eyebrow');
 if (pageEyebrow && pageNumbers[pageKey]) pageEyebrow.textContent = pageNumbers[pageKey];
 if (pageCopy[pageKey]) {
@@ -81,9 +82,42 @@ if (pageCopy[pageKey]) {
   if (description) description.textContent = pageCopy[pageKey][1];
 }
 const homeLead = document.querySelector('.intro-strip .lead');
-if (homeLead) homeLead.textContent = 'D4 Software Engineering student experienced in developing web and mobile applications with PHP, Laravel, React, Flutter, and relational databases.';
+if (homeLead) homeLead.textContent = 'I build software that is useful, understandable, and reliable — while continuously learning how to make it better.';
 const heroCopy = document.querySelector('.hero-copy');
-if (heroCopy) heroCopy.textContent = 'D4 Software Engineering student focused on web and mobile application development, frontend engineering, and information technology support.';
+if (heroCopy) heroCopy.textContent = 'I’m Muhamad Fadhlurrahman, a D4 Software Engineering student based in Bekasi. I enjoy building practical web and mobile applications, learning new technologies, and improving how people interact with digital products.';
+const heroEyebrow = document.querySelector('.hero .eyebrow');
+if (heroEyebrow) heroEyebrow.textContent = 'Software engineering student';
+const heroHeading = document.querySelector('.hero h1');
+if (heroHeading) heroHeading.innerHTML = 'I build software<br><strong>that solves real problems.</strong>';
+const heroRoleCopy = document.querySelector('.hero-role');
+if (heroRoleCopy && heroRoleCopy.firstChild) heroRoleCopy.firstChild.textContent = '';
+const githubEyebrow = document.querySelector('#github-activity .eyebrow');
+if (githubEyebrow) githubEyebrow.textContent = 'What I’ve been working on';
+const githubHeading = document.querySelector('#github-activity h2');
+if (githubHeading) githubHeading.innerHTML = 'Learning by building,<br><em>one project at a time.</em>';
+if (pageKey === 'contact') {
+  const contactEyebrow = document.querySelector('.contact-copy .eyebrow');
+  const contactHeading = document.querySelector('.contact-copy h1');
+  const contactDescription = document.querySelector('.contact-copy > p:last-child');
+  if (contactEyebrow) contactEyebrow.textContent = 'Get in touch';
+  if (contactHeading) contactHeading.innerHTML = 'Let’s<br><em>talk.</em>';
+  if (contactDescription) contactDescription.textContent = 'I’m open to internships, collaboration, freelance work, and opportunities to grow as a software engineer. If you have an idea, a project, or simply want to connect, feel free to reach out.';
+  const contactLabels = document.querySelectorAll('.contact-links span');
+  const contactValues = document.querySelectorAll('.contact-links strong');
+  if (contactLabels[0]) contactLabels[0].textContent = 'Email me';
+  if (contactLabels[1]) contactLabels[1].textContent = 'GitHub profile';
+  if (contactLabels[2]) contactLabels[2].textContent = 'My CV';
+  if (contactValues[2]) contactValues[2].textContent = 'Download my CV';
+}
+const availability = document.querySelector('.availability');
+if (availability) availability.lastChild.textContent = 'Open to internships and opportunities';
+const introEyebrow = document.querySelector('.intro-strip .eyebrow');
+if (introEyebrow) introEyebrow.textContent = 'A little about my work';
+const heroMetaCopy = document.querySelector('.hero-meta');
+if (heroMetaCopy) {
+  const metaItems = heroMetaCopy.querySelectorAll('span');
+  if (metaItems[1]) metaItems[1].textContent = 'Learning by building';
+}
 
 const certificateTranslations = {
   'Belajar Membuat Aplikasi Web dengan React': 'Learning to Build Web Applications with React',
@@ -129,7 +163,7 @@ if (heroMeta) {
   fetch('https://api.counterapi.dev/v1/mufra-dev/visits/up').then((response) => response.ok ? response.json() : Promise.reject()).then((data) => { if (data.count) countTarget.textContent = Number(data.count).toLocaleString('en-US'); }).catch(() => {});
 }
 
-const roles = ['Software Engineering Student', 'Web Developer', 'Frontend Developer', 'Mobile Application Developer', 'IT Support Enthusiast'];
+const roles = ['Web and mobile developer', 'Frontend developer', 'Software engineering student', 'IT support enthusiast'];
 const roleTarget = document.querySelector('#role-rotator');
 if (roleTarget) {
   let roleIndex = 0;
