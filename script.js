@@ -106,8 +106,8 @@ if (pageKey === 'contact') {
   const contactValues = document.querySelectorAll('.contact-links strong');
   if (contactLabels[0]) contactLabels[0].textContent = 'Email me';
   if (contactLabels[1]) contactLabels[1].textContent = 'GitHub profile';
-  if (contactLabels[2]) contactLabels[2].textContent = 'My CV';
-  if (contactValues[2]) contactValues[2].textContent = 'Download my CV';
+  if (contactLabels[2]) contactLabels[2].textContent = 'Curriculum Vitae';
+  if (contactValues[2]) contactValues[2].textContent = 'View Curriculum Vitae';
 }
 const availability = document.querySelector('.availability');
 if (availability) availability.lastChild.textContent = 'Open to internships and opportunities';
