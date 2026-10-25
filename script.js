@@ -1,5 +1,15 @@
 const root = document.documentElement;
 root.lang = 'en';
+document.querySelectorAll('a[href="assets/Muhamad_Fadhlurrahman_ATS_CV_Professional_Final.pdf"]').forEach((link) => {
+  link.href = 'assets/Muhamad_Fadhlurrahman_CV.pdf';
+});
+if (!document.querySelector('link[data-devicon]')) {
+  const devicon = document.createElement('link');
+  devicon.rel = 'stylesheet';
+  devicon.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css';
+  devicon.dataset.devicon = 'true';
+  document.head.appendChild(devicon);
+}
 if (!document.querySelector('link[rel="icon"]')) {
   const favicon = document.createElement('link');
   favicon.rel = 'icon';
@@ -66,13 +76,13 @@ mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click
 }));
 
 const pageCopy = {
-  about: ['Learning, building,<br><em>and figuring things out.</em>', 'I’m a D4 Software Engineering student at Politeknik Negeri Indramayu. My main interests are web development, mobile applications, frontend interfaces, and practical IT support.'],
-  certificates: ['What I’ve<br><em>been learning.</em>', 'These certificates represent the areas I’ve explored while building my foundation in software development, networking, systems, and data.'],
-  projects: ['Things I’ve<br><em>built so far.</em>', 'A collection of web and mobile projects from coursework, personal experiments, and real-world problem solving.'],
-  contact: ['Let’s<br><em>talk.</em>', 'I’m open to internships, collaboration, freelance work, and opportunities to grow as a software engineer. If you have an idea, a project, or simply want to connect, feel free to reach out.']
+  about: ['About Me', 'I’m a D4 Software Engineering student at Politeknik Negeri Indramayu. I’m interested in web and mobile development, frontend work, and practical IT support.'],
+  certificates: ['What I’ve<br><em>been learning.</em>', 'These certificates cover topics I\'ve studied, including web development, programming, data science, and system administration.'],
+  projects: ['Projects I\'ve<br><em>Worked On</em>', 'These are web and mobile projects I\'ve worked on through coursework and personal practice.'],
+  contact: ['Get in Touch', 'Feel free to contact me about internship opportunities, collaborations, or my projects.']
 };
 const pageKey = document.body.dataset.page;
-const pageNumbers = { about: 'A little about me', certificates: 'Learning along the way', projects: 'Selected work', contact: 'Get in touch' };
+const pageNumbers = { about: 'About me', certificates: 'Certificates', projects: 'Projects', contact: 'Contact' };
 const pageEyebrow = document.querySelector('.page-hero .eyebrow');
 if (pageEyebrow && pageNumbers[pageKey]) pageEyebrow.textContent = pageNumbers[pageKey];
 if (pageCopy[pageKey]) {
@@ -82,26 +92,26 @@ if (pageCopy[pageKey]) {
   if (description) description.textContent = pageCopy[pageKey][1];
 }
 const homeLead = document.querySelector('.intro-strip .lead');
-if (homeLead) homeLead.textContent = 'I build software that is useful, understandable, and reliable — while continuously learning how to make it better.';
+if (homeLead) homeLead.textContent = 'Most of my learning comes from building web and mobile projects.';
 const heroCopy = document.querySelector('.hero-copy');
-if (heroCopy) heroCopy.textContent = 'I’m Muhamad Fadhlurrahman, a D4 Software Engineering student based in Bekasi. I enjoy building practical web and mobile applications, learning new technologies, and improving how people interact with digital products.';
 const heroEyebrow = document.querySelector('.hero .eyebrow');
 if (heroEyebrow) heroEyebrow.textContent = 'Software engineering student';
 const heroHeading = document.querySelector('.hero h1');
 if (heroHeading) heroHeading.innerHTML = 'I build software<br><strong>that solves real problems.</strong>';
+if (heroCopy) heroCopy.textContent = "I'm Muhamad Fadhlurrahman, a D4 Software Engineering student based in Bekasi. I enjoy building web and mobile applications, learning new technologies, and improving how people interact with digital products.";
 const heroRoleCopy = document.querySelector('.hero-role');
 if (heroRoleCopy && heroRoleCopy.firstChild) heroRoleCopy.firstChild.textContent = '';
 const githubEyebrow = document.querySelector('#github-activity .eyebrow');
 if (githubEyebrow) githubEyebrow.textContent = 'What I’ve been working on';
 const githubHeading = document.querySelector('#github-activity h2');
-if (githubHeading) githubHeading.innerHTML = 'Learning by building,<br><em>one project at a time.</em>';
+if (githubHeading) githubHeading.innerHTML = 'Projects and code<br><em>on GitHub.</em>';
 if (pageKey === 'contact') {
   const contactEyebrow = document.querySelector('.contact-copy .eyebrow');
   const contactHeading = document.querySelector('.contact-copy h1');
   const contactDescription = document.querySelector('.contact-copy > p:last-child');
   if (contactEyebrow) contactEyebrow.textContent = 'Get in touch';
-  if (contactHeading) contactHeading.innerHTML = 'Let’s<br><em>talk.</em>';
-  if (contactDescription) contactDescription.textContent = 'I’m open to internships, collaboration, freelance work, and opportunities to grow as a software engineer. If you have an idea, a project, or simply want to connect, feel free to reach out.';
+  if (contactHeading) contactHeading.textContent = 'Get in Touch';
+  if (contactDescription) contactDescription.textContent = 'Feel free to contact me about internship opportunities, collaborations, or my projects.';
   const contactLabels = document.querySelectorAll('.contact-links span');
   const contactValues = document.querySelectorAll('.contact-links strong');
   if (contactLabels[0]) contactLabels[0].textContent = 'Email me';
@@ -110,9 +120,17 @@ if (pageKey === 'contact') {
   if (contactValues[2]) contactValues[2].textContent = 'View Curriculum Vitae';
 }
 const availability = document.querySelector('.availability');
-if (availability) availability.lastChild.textContent = 'Open to internships and opportunities';
+if (availability) availability.lastChild.textContent = 'Open to software development internships';
 const introEyebrow = document.querySelector('.intro-strip .eyebrow');
-if (introEyebrow) introEyebrow.textContent = 'A little about my work';
+if (introEyebrow) introEyebrow.textContent = 'How I learn and build';
+const githubSectionEyebrow = document.querySelector('#github-activity .eyebrow');
+if (githubSectionEyebrow) githubSectionEyebrow.textContent = 'My projects';
+const githubEventsLabel = document.querySelector('#github-events + span');
+if (githubEventsLabel) githubEventsLabel.textContent = 'Recent contributions';
+const githubLink = document.querySelector('#github-activity .text-link');
+if (githubLink) githubLink.textContent = 'View GitHub ↗';
+const githubStatus = document.querySelector('#github-status');
+if (githubStatus) githubStatus.textContent = 'My GitHub contributions over the past 12 months.';
 const heroMetaCopy = document.querySelector('.hero-meta');
 if (heroMetaCopy) {
   const metaItems = heroMetaCopy.querySelectorAll('span');
@@ -130,16 +148,32 @@ document.querySelectorAll('.certificate-card h3').forEach((title) => { if (certi
 const githubMark = document.querySelector('.github-mark');
 if (githubMark) githubMark.innerHTML = '<span>GH</span>';
 if (pageKey === 'about') {
-  const databaseRow = document.querySelector('.about-grid .skill-list div:nth-child(3)');
-  if (databaseRow) databaseRow.querySelector('span').textContent = 'SQLite · MySQL · Relational database design';
-  const toolsRow = document.querySelector('.about-grid .skill-list div:nth-child(4)');
-  if (toolsRow) toolsRow.querySelector('span').textContent = 'Git · GitHub · Postman · VS Code · Figma · phpMyAdmin · OWASP ZAP';
-  const systemsRow = document.querySelector('.about-grid .skill-list div:last-child');
-  if (systemsRow) {
-    systemsRow.querySelector('strong').textContent = 'Systems & Networking';
-    systemsRow.querySelector('span').textContent = 'Linux · Debian · Ubuntu · Cisco · MikroTik Router · LAN · Fiber Optic';
-  }
+  const toolsHeading = document.querySelector('.about-block h2');
+  if (toolsHeading) toolsHeading.textContent = 'Technologies I’ve used';
+  const technologyRows = [
+    ['Languages', [['PHP', 'devicon-php-plain'], ['JavaScript', 'devicon-javascript-plain'], ['Python', 'devicon-python-plain'], ['Java', 'devicon-java-plain'], ['C++', 'devicon-cplusplus-plain'], ['Dart', 'devicon-dart-plain'], ['HTML', 'devicon-html5-plain'], ['CSS', 'devicon-css3-plain']]],
+    ['Frameworks', [['Laravel', 'devicon-laravel-plain'], ['React', 'devicon-react-original'], ['Flutter', 'devicon-flutter-plain']]],
+    ['Database', [['SQLite', 'devicon-sqlite-plain'], ['MySQL', 'devicon-mysql-plain']]],
+    ['Tools', [['Git', 'devicon-git-plain'], ['GitHub', 'devicon-github-original'], ['Postman', 'devicon-postman-plain'], ['VS Code', 'devicon-vscode-plain'], ['Figma', 'devicon-figma-plain'], ['phpMyAdmin', 'simple-icon:phpmyadmin'], ['OWASP ZAP', 'zap-icon']]],
+    ['Systems & Networking', [['Linux', 'devicon-linux-plain'], ['Debian', 'devicon-debian-plain'], ['Ubuntu', 'devicon-ubuntu-plain'], ['Cisco', 'simple-icon:cisco'], ['MikroTik Router', 'simple-icon:mikrotik']]]
+  ];
+  document.querySelectorAll('.about-grid .skill-list > div').forEach((row, index) => {
+    const [label, items] = technologyRows[index] || [];
+    if (!label) return;
+    row.querySelector('strong').textContent = label;
+    row.querySelector('span').className = 'skill-items';
+    row.querySelector('span').innerHTML = items.map(([name, icon]) => {
+      if (icon === 'simple-icon:phpmyadmin') return `<span class="skill-item"><img class="skill-icon-img" src="https://cdn.simpleicons.org/phpmyadmin" alt="" aria-hidden="true">${name}</span>`;
+      if (icon === 'simple-icon:cisco') return `<span class="skill-item"><img class="skill-icon-img" src="https://cdn.simpleicons.org/cisco" alt="" aria-hidden="true">${name}</span>`;
+      if (icon === 'simple-icon:mikrotik') return `<span class="skill-item"><img class="skill-icon-img" src="https://cdn.simpleicons.org/mikrotik" alt="" aria-hidden="true">${name}</span>`;
+      if (icon === 'zap-icon') return `<span class="skill-item"><img class="skill-icon-img" src="https://www.zaproxy.org/img/zap-by-checkmarx.svg" alt="" aria-hidden="true">${name}</span>`;
+      if (icon.startsWith('skill-glyph:')) return `<span class="skill-item"><i class="skill-glyph" aria-hidden="true">${icon.split(':')[1]}</i>${name}</span>`;
+      return `<span class="skill-item"><i class="${icon}" aria-hidden="true"></i>${name}</span>`;
+    }).join('');
+  });
   const experienceItems = document.querySelectorAll('.experience-item');
+  const experienceHeading = document.querySelector('.experience-section h2');
+  if (experienceHeading) experienceHeading.textContent = 'Experience so far';
   if (experienceItems[0]) experienceItems[0].innerHTML = '<div><span>2022 · 2 months</span><h3>IT Support Intern</h3><strong>PT Indofarma Tbk · Vocational School Internship</strong></div><ul><li>Assisted with LAN cable crimping and network installation.</li><li>Assisted with fiber optic cable installation.</li><li>Performed basic printer troubleshooting and resolved common printing issues.</li><li>Assisted with laptop hardware troubleshooting and basic technical issue handling.</li></ul>';
   if (experienceItems[1]) experienceItems[1].innerHTML = '<div><span>2023 · 2 months</span><h3>Technical Support Intern</h3><strong>PT Madina Flash, Bintaro · Vocational School Internship</strong></div><ul><li>Recorded customer service data and reported smartphone and laptop issues using Microsoft Excel.</li><li>Entered and managed service information through the company\'s internal application.</li><li>Documented device damage and reported issues to support the technical inspection process.</li><li>Checked spare-part availability based on reported device issues.</li></ul>';
 }
@@ -163,14 +197,20 @@ if (heroMeta) {
   fetch('https://api.counterapi.dev/v1/mufra-dev/visits/up').then((response) => response.ok ? response.json() : Promise.reject()).then((data) => { if (data.count) countTarget.textContent = Number(data.count).toLocaleString('en-US'); }).catch(() => {});
 }
 
-const roles = ['Web and mobile developer', 'Frontend developer', 'Software engineering student', 'IT support enthusiast'];
+const roles = ['Software Engineer', 'Frontend Developer', 'Web Developer', 'Backend Developer', 'Mobile App Developer', 'Full-Stack Developer', 'SQL Developer', 'IT Support Specialist'];
 const roleTarget = document.querySelector('#role-rotator');
-if (roleTarget) {
+document.querySelector('.typing-caret')?.remove();
+if (roleTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   let roleIndex = 0;
-  setInterval(() => {
+  roleTarget.textContent = roles[roleIndex];
+  window.setInterval(() => {
     roleTarget.classList.add('role-changing');
-    setTimeout(() => { roleIndex = (roleIndex + 1) % roles.length; roleTarget.textContent = roles[roleIndex]; roleTarget.classList.remove('role-changing'); }, 260);
-  }, 3000);
+    window.setTimeout(() => {
+      roleIndex = (roleIndex + 1) % roles.length;
+      roleTarget.textContent = roles[roleIndex];
+      roleTarget.classList.remove('role-changing');
+    }, 240);
+  }, 2500);
 }
 
 document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
@@ -181,6 +221,11 @@ document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click',
 
 const defaultProjectFilter = document.querySelector('.tab.active')?.dataset.filter;
 if (defaultProjectFilter) document.querySelectorAll('.project-card').forEach((card) => card.classList.toggle('hidden', card.dataset.category !== defaultProjectFilter));
+const livoraCard = [...document.querySelectorAll('.project-card')].find((card) => card.querySelector('h3')?.textContent.trim() === 'Livora');
+const livoraDescription = livoraCard?.querySelector('.project-content > div > p:not(.project-type)');
+if (livoraDescription && !livoraDescription.textContent.includes('Demo login')) {
+  livoraDescription.textContent += ' Demo login: username lepi, password 123.';
+}
 
 const recipeDownload = document.querySelector('[aria-label="Download MyResep"]');
 if (recipeDownload) recipeDownload.href = 'https://drive.google.com/file/d/1ZYe_dC5_ygw-JUF-hFlhdtZCowG7Csk-/view?usp=sharing';
@@ -189,14 +234,22 @@ const modal = document.createElement('div');
 modal.className = 'certificate-modal';
 modal.innerHTML = '<div class="certificate-modal-content"><button class="certificate-close" type="button" aria-label="Close certificate">×</button><img alt="Certificate preview"><h3></h3><p></p></div>';
 document.body.appendChild(modal);
-document.querySelectorAll('.certificate-card').forEach((card) => card.addEventListener('click', () => {
+document.querySelectorAll('.certificate-card').forEach((card) => {
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  const openCertificate = () => {
   const image = card.querySelector('img');
   modal.querySelector('img').src = image.src;
   modal.querySelector('img').alt = image.alt;
   modal.querySelector('h3').textContent = card.querySelector('h3').textContent;
   modal.querySelector('p').textContent = card.querySelector('p').textContent;
   modal.classList.add('open');
-}));
+  };
+  card.addEventListener('click', openCertificate);
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openCertificate(); }
+  });
+});
 const closeModal = () => modal.classList.remove('open');
 modal.querySelector('.certificate-close').addEventListener('click', closeModal);
 modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
@@ -206,7 +259,10 @@ const projectModal = document.createElement('div');
 projectModal.className = 'project-image-modal';
 projectModal.innerHTML = '<div class="project-image-modal-content"><button class="project-image-close" type="button" aria-label="Close project preview">×</button><img alt="Project preview"><h3></h3><p></p></div>';
 document.body.appendChild(projectModal);
-document.querySelectorAll('.project-thumb').forEach((thumb) => thumb.addEventListener('click', () => {
+document.querySelectorAll('.project-thumb').forEach((thumb) => {
+  thumb.tabIndex = 0;
+  thumb.setAttribute('role', 'button');
+  const openProject = () => {
   const card = thumb.closest('.project-card');
   const image = thumb.querySelector('img');
   projectModal.querySelector('img').src = image.src;
@@ -214,34 +270,16 @@ document.querySelectorAll('.project-thumb').forEach((thumb) => thumb.addEventLis
   projectModal.querySelector('h3').textContent = card.querySelector('h3').textContent;
   projectModal.querySelector('p').textContent = card.querySelector('.project-type').textContent;
   projectModal.classList.add('open');
-}));
+  };
+  thumb.addEventListener('click', openProject);
+  thumb.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openProject(); }
+  });
+});
 const closeProjectModal = () => projectModal.classList.remove('open');
 projectModal.querySelector('.project-image-close').addEventListener('click', closeProjectModal);
 projectModal.addEventListener('click', (event) => { if (event.target === projectModal) closeProjectModal(); });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeProjectModal(); });
-
-const cvProjectNames = {
-  Livora: { title: 'Sistem Edukasi Daur Ulang Sampah (Livora)', type: 'Native Web · Academic Project', tech: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL'], description: 'Developed a web-based system focused on recycling education and waste management. Provided educational information about waste and recyclable materials. Implemented a concept where recyclable waste can be exchanged for coins and redeemed for rewards. Demo login — Username: lepi · Password: 123.' },
-  'RT Management System': { title: 'RT Management System', type: 'Personal Project', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], description: 'Developed a web-based system to simplify neighborhood administrative record keeping. Implemented community financial record management to improve transparency and reduce paper-based administration. Added resident data management and announcement features for sharing community information and activities.' },
-  'TMII CMS': { title: 'TMII Information & Ticketing System', type: 'Laravel · Academic Project', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], description: 'Developed a web-based information and ticketing system for TMII as an academic project. Developed an administrative CMS to manage website content and system information. Implemented ticketing information and purchasing access to simplify the visitor ticketing process. Managed tourism information including attractions, news/articles, and other visitor information.' },
-  MyResep: { title: 'Recipe Sharing App', type: 'Flutter · Academic Project', tech: ['Flutter'], description: 'Developed a mobile application for sharing and browsing food recipes using Flutter. Implemented features for users to submit and exchange recipes with other users. Added gamification elements to make recipe sharing more engaging and encourage user participation.' }
-};
-Object.assign(cvProjectNames, {
-  Livora: { ...cvProjectNames.Livora, description: 'Web-based recycling education and waste management system with coin and reward features. Demo login — Username: lepi · Password: 123.' },
-  'RT Management System': { ...cvProjectNames['RT Management System'], description: 'Neighbourhood administration system with financial records, resident data, and announcements.' },
-  'TMII CMS': { ...cvProjectNames['TMII CMS'], description: 'TMII information and ticketing system with an administrative CMS for tourism content and ticket access.' },
-  MyResep: { ...cvProjectNames.MyResep, description: 'Flutter recipe-sharing application with user submissions, recipe exchange, and gamification.' }
-});
-document.querySelectorAll('.project-card').forEach((card) => {
-  const currentTitle = card.querySelector('h3')?.textContent.trim();
-  const project = cvProjectNames[currentTitle];
-  if (!project) return;
-  card.querySelector('h3').textContent = project.title;
-  card.querySelector('.project-type').textContent = project.type;
-  const description = card.querySelector('.project-content > div > p:not(.project-type)');
-  if (description) description.textContent = project.description;
-  if (project.tech) card.querySelector('.tech-list').innerHTML = project.tech.map((item) => `<span>${item}</span>`).join('');
-});
 
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {

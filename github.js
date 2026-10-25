@@ -5,7 +5,7 @@ const chart = document.querySelector('#activity-chart');
 
 if (chart) {
   const now = new Date();
-  const showFallback = (message) => { chart.innerHTML = '<div class="empty-activity">Activity data is temporarily unavailable.<br><a href="https://github.com/kusunoki778" target="_blank" rel="noreferrer">View the complete activity on GitHub ↗</a></div>'; document.querySelector('#github-status').textContent = message; };
+  const showFallback = (message) => { chart.innerHTML = '<div class="empty-activity">Activity data is temporarily unavailable.<br><a href="https://github.com/kusunoki778" target="_blank" rel="noreferrer">View GitHub ↗</a></div>'; document.querySelector('#github-status').textContent = message; };
   const getJson = (url) => fetch(url, { headers: { Accept: 'application/vnd.github+json' } }).then((response) => response.ok ? response.json() : Promise.reject());
   const commitRequests = githubRepositories.map((repository) => getJson(`https://api.github.com/repos/${githubUser}/${repository}/commits?per_page=100`).then((commits) => ({ repository, commits })));
   const contributionRequest = getJson(`https://github-contributions-api.jogruber.de/v4/${githubUser}?y=last`);
@@ -40,6 +40,6 @@ if (chart) {
       repositoryPanel.innerHTML = `<p>Most active repositories</p>${topRepositories.map(([repository, activity], index) => `<a href="https://github.com/${githubUser}/${repository}" target="_blank" rel="noreferrer"><span>0${index + 1}</span><strong>${repository}</strong><small>${activity} commits ↗</small></a>`).join('')}`;
       document.querySelector('.github-panel').appendChild(repositoryPanel);
     }
-    document.querySelector('#github-status').textContent = contributions ? 'GitHub contribution activity — last 12 months.' : 'GitHub activity is temporarily unavailable.';
+    document.querySelector('#github-status').textContent = contributions ? 'My GitHub contributions over the past 12 months.' : 'GitHub activity is temporarily unavailable.';
   }).catch(() => showFallback('GitHub commit data could not be loaded right now.'));
 }
